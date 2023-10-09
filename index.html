@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Switch Button</title>
-  
   <style type="text/css" media="all">
-    body{
+    body {
       body: 40px;
+      margin: 50px;
     }
-    *{
+
+    * {
       box-sizing: border-box;
     }
-    .checkbox-block{
+
+    .checkbox-block {
       width: max-content;
     }
+
     .checkbox-block label {
       display: block;
+      --color: black;
       width: 35px;
-      border: 1px solid black;
+      border: 1px solid var(--color);
       height: 20px;
       border-radius: 10px;
+      position: relative;
+      transition: border-color 300ms;
+    }
+
+    .checkbox-block label::after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-color: var(--color);
+      border-radius: 50%;
+      position: absolute;
+      left: 2px;
+      top: 1px;
+      transition: left 300ms, background-color 300ms;
+    }
+
+    .checkbox-block input {
+      display: none;
+    }
+
+    .checkbox-block:has(input:checked) label::after {
+      --color: green;
+    }
+
+    .checkbox-block:has(input:checked) label::after {
+      left: 16px;
     }
   </style>
 </head>
 
 <body>
   <div class="checkbox-block">
-    <input type="checkbox" name="check" id="check"  />
-    <label for="check">check</label>
+    <input type="checkbox" name="check" id="check" />
+    <label for="check"></label>
   </div>
-  
 </body>
+
 </html>
